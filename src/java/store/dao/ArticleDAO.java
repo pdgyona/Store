@@ -5,6 +5,7 @@
  */
 package store.dao;
 
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import store.entites.Article;
@@ -21,6 +22,16 @@ public class ArticleDAO {
         em.getTransaction().begin();
         em.persist(article);
         em.getTransaction().commit();
+    }
+
+    public List<Article> listerTous() {
+        EntityManager em = Persistence.createEntityManagerFactory("StoreQU").createEntityManager();
+        return em.createQuery("SELECT article FROM Article article").getResultList();
+    }
+
+    public Article rechercherParId(long id) {
+       EntityManager em = Persistence.createEntityManagerFactory("StorePU").createEntityManager();
+       return em.find(Article.class, id);
     }
     
     

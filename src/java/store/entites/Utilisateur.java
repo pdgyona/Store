@@ -23,6 +23,8 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class Utilisateur implements Serializable {
+
+    
     
     public enum TypeUtil{CLIENT, ADMIN,  EXPEDITION};
 
@@ -35,8 +37,8 @@ public class Utilisateur implements Serializable {
     private TypeUtil typeUtil; 
     private String adresseLivraison;
     
-    @OneToMany(mappedBy = "commandes")
-    private List<Commande> Commandes = new ArrayList<>();
+    @OneToMany(mappedBy = "utilisateur")
+    private List<Commande> listCommandes = new ArrayList<>();
     
     public Long getId() {
         return id;
@@ -69,6 +71,7 @@ public class Utilisateur implements Serializable {
     public void setTypeUtil(TypeUtil typeUtil) {
         this.typeUtil = typeUtil;
     }
+    
 
     public String getAdresseLivraison() {
         return adresseLivraison;
@@ -78,15 +81,15 @@ public class Utilisateur implements Serializable {
         this.adresseLivraison = adresseLivraison;
     }
 
-    public List<Commande> getCommandes() {
-        return Commandes;
+    public List<Commande> getListCommandes() {
+        return listCommandes;
     }
 
-    public void setCommandes(List<Commande> Commandes) {
-        this.Commandes = Commandes;
+    public void setListCommandes(List<Commande> listCommandes) {
+        this.listCommandes = listCommandes;
     }
-
-   
+    
+    
 
     @Override
     public int hashCode() {

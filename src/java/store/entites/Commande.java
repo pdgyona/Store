@@ -38,11 +38,11 @@ public class Commande implements Serializable {
     private Etat etat;
     
     @ManyToOne
-    @JoinColumn(name = "utilisateur")
-    private Commande commande;
+    @JoinColumn(name = "Utilisateur_ID")
+    private Utilisateur utilisateur;
     
-    @ManyToMany(mappedBy = "articles")
-    private List<Article> articles = new ArrayList<>();
+    @ManyToMany(mappedBy = "commandes")
+    private List<Article> listeArticles = new ArrayList<>();
     
 
     public Long getId() {
@@ -77,21 +77,24 @@ public class Commande implements Serializable {
         this.etat = etat;
     }
 
-    public Commande getCommande() {
-        return commande;
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
     }
 
-    public void setCommande(Commande commande) {
-        this.commande = commande;
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
     }
 
-    public List<Article> getArticles() {
-        return articles;
+    public List<Article> getListeArticles() {
+        return listeArticles;
     }
 
-    public void setArticles(List<Article> articles) {
-        this.articles = articles;
+    public void setListeArticles(List<Article> listeArticles) {
+        this.listeArticles = listeArticles;
     }
+    
+    
+    
 
     @Override
     public int hashCode() {

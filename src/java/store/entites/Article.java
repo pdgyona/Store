@@ -31,8 +31,41 @@ public class Article implements Serializable {
     private long prix;
     
     @ManyToMany
-    @JoinTable(name = "commande")
+    @JoinTable(name = "commande_article")
     private List <Commande> commandes = new ArrayList<>();
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getStock() {
+        return stock;
+    }
+
+    public void setStock(String stock) {
+        this.stock = stock;
+    }
+
+    public long getPrix() {
+        return prix;
+    }
+
+    public void setPrix(long prix) {
+        this.prix = prix;
+    }
+
+    public List<Commande> getCommandes() {
+        return commandes;
+    }
+
+    public void setCommandes(List<Commande> commandes) {
+        this.commandes = commandes;
+    }
+    
 
     public Long getId() {
         return id;
